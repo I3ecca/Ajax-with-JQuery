@@ -46,9 +46,16 @@ $.getJSON(flickrApiUrl,{
   // function that will execute when the call is successful
   console.log(data);
   // Once we see that data that prints out, we can now itterate over each item!
-  $.each(data.items, function(itemIndex){
+    $.each(data.items, function(index, item){
+      console.log(item);
+      console.log(item.media.m);
+      $("<img>").attr("src", item.media.m).appendTo("#flickr");
+
+      if (index == 4){
+        // we do this so we only loop through items 0-4.
+        return false;
+      }
       
-      console.log(data.items[itemIndex]);
   }) 
 }).fail(function(data){
   // Fail
